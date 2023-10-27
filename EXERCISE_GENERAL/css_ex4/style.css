@@ -1,0 +1,124 @@
+*{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px;
+    border-color: #8c9baa;
+}
+
+.display{
+    grid-area: display;
+    justify-content: end;
+    background-color: #414850;
+    border: none;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    padding-right: 10px;
+    color: white;
+}
+.più{
+    grid-area: più;
+    background-color: #d2dce3;
+    border-top: none;
+    border-left: none;
+}
+.meno{
+    grid-area: meno;
+    background-color: #d2dce3;
+    border-top: none;
+}
+.per{
+    grid-area: per;
+    background-color: #d2dce3;
+    border-top: none;
+}
+.diviso{
+    grid-area: diviso;
+    background-color: #d2dce3;
+    border-top: none;
+    border-right: none;
+}
+.sette{
+    grid-area: sette;
+    background-color: #eff2f5;
+    border-left: none;
+}
+.otto{
+    grid-area: otto;
+    background-color: #eff2f5;
+}
+.nove{
+    grid-area: nove;
+    background-color: #eff2f5;
+}
+.quattro{
+    grid-area: quattro;
+    background-color: #eff2f5;
+    border-left: none;
+}
+.cinque{
+    grid-area: cinque;
+    background-color: #eff2f5;
+}
+.sei{
+    grid-area: sei;
+    background-color: #eff2f5;
+}
+.uno{
+    grid-area: uno;
+    background-color: #eff2f5;
+    border-left: none;
+}
+.due{
+    grid-area: due;
+    background-color: #eff2f5;
+}
+.tre{
+    grid-area: tre;
+    background-color: #eff2f5;
+}
+.zer{
+    grid-area: zer;
+    background-color: #eff2f5;
+    border-left: none;
+    border-bottom: none;
+    border-bottom-left-radius: 7px;
+}
+.virgola{
+    grid-area: virgola;
+    background-color: #eff2f5;
+    border-bottom: none;
+}
+.ac{
+    grid-area: ac;
+    background-color: #eff2f5;
+    border-bottom: none;
+}
+.uguale{
+    grid-area: uguale;
+    background-color: #f77077;
+    border-right: none;
+    border-bottom: none;
+    border-bottom-right-radius: 7px;
+}
+
+section {
+    display: grid;
+    grid-template-columns: 70px 70px 70px 70px;
+    grid-template-rows: 40px 50px 50px 50px 50px 50px;
+    grid-template-areas:
+    "display display display display"
+    "più meno per diviso"
+    "sette otto nove uguale"
+    "quattro cinque sei uguale"
+    "uno due tre uguale"
+    "zer virgola ac uguale";
+    height: max-content;
+    width: max-content;
+}
+
+/*in collaborazione tra Barranca e Merli*/
