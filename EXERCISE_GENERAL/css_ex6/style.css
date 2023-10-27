@@ -1,0 +1,41 @@
+*{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card {
+    border: solid 1px;
+    border-color: lightgray;
+    border-radius: 5px;
+    width: 330px;
+    height: max-content;
+}
+img{
+    width: 330px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+h3, p, a {
+    margin-left: 16px;
+}
+
+.card__article > p {
+
+    margin-right: 50px;
+}
+
+.card__items-item {
+    border-top: solid 1px;
+    border-color: lightgray;
+}
+
+.card__footer-actions{
+    border-top: solid 1px;
+    border-color: lightgray;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+a {
+    color: #0d6efd;
+}
