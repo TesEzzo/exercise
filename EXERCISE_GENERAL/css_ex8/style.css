@@ -90,7 +90,7 @@ p {
     padding-bottom: 30px;
 }
 
-section{
+#all-in{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -98,7 +98,7 @@ section{
 }
 
 @media (max-width:768px) {
-    section{
+    #all-in{
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
