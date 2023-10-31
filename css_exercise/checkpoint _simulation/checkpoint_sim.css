@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: HelveticaNeue,Helvetica Neue,helvetica,Sans-Serif
+}
+.under-nav {
+    height: 87px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.under-nav__center > a{
+    padding-left: 15px;
+    padding-right: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+.under-nav__amicon {
+    color: black;
+    font-size: 26px;
+}
+
+.under-nav__right{
+    padding-right: 30px;
+}
+.under-nav__left{
+    padding-left: 30px;
+}
+.under-nav__center{
+    width: max-content;
+}
+
+button{
+    background-color:blueviolet;
+    color: white;
+    height: 50px;
+    width: 140px;
+    border: none;
+    border-radius: 50px;
+}
