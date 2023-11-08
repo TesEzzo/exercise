@@ -1,0 +1,52 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    width: 100vw;
+}
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 141px;
+    margin-left: 80px;
+    margin-right: 80px;
+    background-color: aqua;
+}
+
+.nav-left{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: poppins-extralight,poppins,sans-serif;
+    padding-left: 10px;
+    margin-right: 300px;
+    min-width: max-content;
+}
+
+svg {
+    height: 31px;
+    width: 36px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+}
+
+.nav-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.nav-right > div > a {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+.nav-right > div > p {
+    padding-left: 30px;
+    color: black;
+} 
