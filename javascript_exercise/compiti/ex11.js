@@ -1,5 +1,5 @@
 const colors = ["red", "green", "blue"];
 
-const [firstColor, secondColor, ThirdColor] = colors;
+const [firstColor, secondColor, thirdColor] = colors;
 
-console.log(`The pixel colors are: ${firstColor}, ${secondColor} and ${ThirdColor}.`);
+console.log(`The pixel colors are: ${firstColor}, ${secondColor} and ${thirdColor}.`);
