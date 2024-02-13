@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="./index.css">
+  <style>
+    #menu-item-list li.active span {
+  font-weight: 900;
+  color: #7d4ed2;
+}
+  </style>
+</head>
+<body class="bg-gray-500">
+  <div class="flex w-full bg-[#00008b]">
+    <div class="relative group/item">
+      <div class="bg-transparent text-white p-[10px] group-hover/item:bg-white group-hover/item:text-[#00008b] group-hover/item:cursor-pointer flex gap-[10px] items-center w-[250px]" id="selected-value">
+        <img src="https://assets.pancakeswap.finance/web/chains/56.png" class="w-6 h-6"/>
+        <span>BNB Chain</span>
+      </div>
+      <div class="dropdown-menu absolute hidden bg-[#d3d3d3] w-full left-0 p-5 group-hover/item:block">
+        <ul id="menu-item-list" class="list-none p-0"></ul>
+      </div>
+    </div>
+  </div> 
+  <script src="./index.js"></script>
+</body>
+</html>
