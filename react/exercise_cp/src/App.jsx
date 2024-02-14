@@ -18,7 +18,7 @@ const App = () => {
       <table>
         <thead>
           <tr>
-            <th>PostId</th>
+            <th className="bg-tsx">PostId</th>
             <th>Name</th>
             <th>Body</th>
           </tr>

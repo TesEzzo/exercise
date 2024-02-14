@@ -6,14 +6,22 @@
   <title>Document</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="./index.css">
-  <style>
+  <!-- <style>
     #menu-item-list li.active span {
   font-weight: 900;
   color: #7d4ed2;
 }
+  </style> -->
+  <style type="text/tailwindcss">
+    .buttonblue {
+      @apply h-max w-max bg-blue-500 rounded-full;
+    }
+    .buttonred {
+      @apply h-max w-max bg-red-500 rounded-full;
+    }
   </style>
 </head>
-<body class="bg-gray-500">
+<!-- <body class="bg-gray-500">
   <div class="flex w-full bg-[#00008b]">
     <div class="relative group/item">
       <div class="bg-transparent text-white p-[10px] group-hover/item:bg-white group-hover/item:text-[#00008b] group-hover/item:cursor-pointer flex gap-[10px] items-center w-[250px]" id="selected-value">
@@ -26,5 +34,17 @@
     </div>
   </div> 
   <script src="./index.js"></script>
+</body> -->
+<body>
+  <button class="absolute top-10 left-10 bg-red-500 p-6 w-32 h-6 flex justify-center items-center rounded-full">CIAO</button>
+  <div class="bg-green-500 absolute top-32 left-10 w-64 h-64 flex flex-col items-center p-16 rounded-xl ">
+    <h1>efonsiwjvf</h1>
+    <p>ifuiovfuisjvbnuivbniav</p>
+  </div>
+  <div class="bg-yellow-500 absolute top-32 left-10 w-64 h-64 flex flex-col items-center p-16 rounded-3xl hidden">
+    <h1>efonsiwjvf</h1>
+    <p>ifuiovfuisjvbnuivbniav</p>
+  </div>
+  <button class="w-8 h-8 bg-tsx">aefafe</button>
 </body>
 </html>
