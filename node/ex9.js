@@ -1,20 +1,3 @@
-// const someTask = new Promise(function(resolve, reject) {
-//     setTimeout(() => resolve("This is some data"), 2000)
-// })
-
-// async function executeTask() {
-//     try {
-//         const value = await someTask;
-//         console.log("value:", value);
-//         console.log("someTask:", someTask);
-//     } catch (error) {
-//         console.log("error:", error);
-//         console.log("someTask:", someTask);
-//     }
-// }
-
-// executeTask();
-
 const luckyDraw = (player) => {
   return new Promise((resolve, reject) => {
     const win = Boolean(Math.round(Math.random()));
