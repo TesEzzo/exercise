@@ -32,7 +32,7 @@
 // const getOneById = (req:Request, res:Response) => {
 //     const { id } = req.params;
 //     const planet = planets.find((p) => p.id === Number(id));
-  
+
 //     res.status(200).json(planet);
 //   }
 // const create = (req:Request, res:Response) => {
@@ -40,30 +40,30 @@
 //     if (error) {
 //       return res.status(400).json({ error: error.details[0].message });
 //     }
-  
+
 //     const { id, name } = req.body;
 //     const newPlanet: Planet = { id, name };
 //     planets = [...planets, newPlanet];
-  
+
 //     res.status(201).json({ msg: "The planet was created." });
 //   }
 // const updateDyId = (req:Request, res:Response) => {
 //     const { id } = req.params;
-  
+
 //     const { error } = planetSchema.validate(req.body);
 //     if (error) {
 //       return res.status(400).json({ error: error.details[0].message });
 //     }
-  
+
 //     const { name } = req.body;
 //     planets = planets.map((p) => (p.id === Number(id) ? { ...p, name } : p));
-  
+
 //     res.status(200).json({ msg: "The planet was updated." });
 //   }
 // const deleteById = (req:Request, res:Response) => {
 //     const { id } = req.params;
 //     planets = planets.filter((p) => p.id !== Number(id));
-  
+
 //     res.status(200).json({ msg: "The planet was deleted." });
 //   }
 
@@ -79,6 +79,79 @@
 
 // ------------ Add Postgres DB
 
+// import { Request, Response } from "express";
+// import Joi from "joi";
+// import pgPromise from "pg-promise";
+
+// const db = pgPromise()("postgres://postgres:postgres@localhost:5432/postgres");
+
+// const setupDb = async () => {
+//   await db.none(`
+//     DROP TABLE IF EXISTS planets;
+
+//     CREATE TABLE planets (
+//       id SERIAL NOT NULL PRIMARY KEY,
+//       name TEXT NOT NULL
+//     );
+//   `);
+
+//   await db.none(`INSERT INTO planets (name) VALUES ('Earth')`);
+//   await db.none(`INSERT INTO planets (name) VALUES ('Mars')`);
+
+// };
+// setupDb();
+
+// const planetSchema = Joi.object({
+//   name: Joi.string().required(),
+// });
+
+// const getAll = async (req: Request, res: Response) => {
+//   const planets = await db.many(`SELECT * FROM planets;`);
+//   res.status(200).json(planets);
+// };
+// const getOneById = async (req: Request, res: Response) => {
+//   const { id } = req.params;
+//   const planet = await db.oneOrNone(`SELECT * FROM planets WHERE id=$1;`, Number(id));
+
+//   res.status(200).json(planet);
+// };
+
+// const create = async (req: Request, res: Response) => {
+//   const { name } = req.body;
+//   const { error } = planetSchema.validate(req.body);
+//   if (error) {
+//     return res.status(400).json({ error: error.details[0].message });
+//   } else {
+//     await db.none(`INSERT INTO planets (name) VALUES ($1)`, name)
+//     res.status(201).json({ msg: "The planet was created." });
+//   }
+
+// };
+
+// const updateDyId = async (req: Request, res: Response) => {
+//   const { id } = req.params;
+//   const { name } = req.body;
+//   await db.none(`UPDATE planets SET name=$2 WHERE id=$1`, [id, name])
+
+//   const { error } = planetSchema.validate(req.body);
+//   if (error) {
+//     return res.status(400).json({ error: error.details[0].message });
+//   }
+
+//   res.status(200).json({ msg: "The planet was updated." });
+// };
+// const deleteById = async (req: Request, res: Response) => {
+//   const { id } = req.params;
+// await db.none(`DELETE FROM planets WHERE id=$1`, Number(id))
+//   res.status(200).json({ msg: "The planet was deleted." });
+// };
+
+// export { getAll, getOneById, create, updateDyId, deleteById };
+
+// ------------
+
+// ------------ Upload files
+
 import { Request, Response } from "express";
 import Joi from "joi";
 import pgPromise from "pg-promise";
@@ -91,14 +164,13 @@ const setupDb = async () => {
 
     CREATE TABLE planets (
       id SERIAL NOT NULL PRIMARY KEY,
-      name TEXT NOT NULL
+      name TEXT NOT NULL,
+      image TEXT
     );
   `);
 
   await db.none(`INSERT INTO planets (name) VALUES ('Earth')`);
   await db.none(`INSERT INTO planets (name) VALUES ('Mars')`);
-
-  
 };
 setupDb();
 
@@ -112,7 +184,10 @@ const getAll = async (req: Request, res: Response) => {
 };
 const getOneById = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const planet = await db.oneOrNone(`SELECT * FROM planets WHERE id=$1;`, Number(id));
+  const planet = await db.oneOrNone(
+    `SELECT * FROM planets WHERE id=$1;`,
+    Number(id)
+  );
 
   res.status(200).json(planet);
 };
@@ -123,15 +198,15 @@ const create = async (req: Request, res: Response) => {
   if (error) {
     return res.status(400).json({ error: error.details[0].message });
   } else {
-    await db.none(`INSERT INTO planets (name) VALUES ($1)`, name)
+    await db.none(`INSERT INTO planets (name) VALUES ($1)`, name);
     res.status(201).json({ msg: "The planet was created." });
   }
-
 };
+
 const updateDyId = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { name } = req.body;
-  await db.none(`UPDATE planets SET name=$2 WHERE id=$1`, [id, name])
+  await db.none(`UPDATE planets SET name=$2 WHERE id=$1`, [id, name]);
 
   const { error } = planetSchema.validate(req.body);
   if (error) {
@@ -142,8 +217,23 @@ const updateDyId = async (req: Request, res: Response) => {
 };
 const deleteById = async (req: Request, res: Response) => {
   const { id } = req.params;
-await db.none(`DELETE FROM planets WHERE id=$1`, Number(id))
+  await db.none(`DELETE FROM planets WHERE id=$1`, Number(id));
   res.status(200).json({ msg: "The planet was deleted." });
 };
 
-export { getAll, getOneById, create, updateDyId, deleteById };
+const createImage = async (req: Request, res: Response) => {
+  console.log(req.file);
+  const { id } = req.params;
+  const fileName = req.file?.path;
+
+  if (fileName) {
+    db.none(`UPDATE planets SET image=$2 WHERE id=$1`, [id, fileName]);
+    res.status(201).json({ msg: "Planet image uploaded successfully" });
+  } else {
+    res.status(400).json({ msg: "Planet image failed to upload" });
+  }
+};
+
+export { getAll, getOneById, create, updateDyId, deleteById, createImage };
+
+// ------------
