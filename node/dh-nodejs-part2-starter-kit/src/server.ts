@@ -134,6 +134,8 @@ import {
   deleteById,
   createImage,
 } from "./controllers/planets.js";
+import { logIn } from "./controllers/users.js"
+import { singUp } from "./controllers/users.js"
 import multer from "multer";
 
 const storage = multer.diskStorage({
@@ -160,6 +162,9 @@ app.put("/api/planets/:id", updateDyId);
 app.delete("/api/planets/:id", deleteById);
 
 app.post("/api/planets/:id/image", upload.single("image"), createImage);
+
+app.post("/api/users/login", logIn)
+app.post("/api/users/login", singUp)
 
 app.listen(process.env.SERVER_PORT, () => {
   console.log(
