@@ -41,8 +41,13 @@ const singUp = async (req: Request, res: Response) => {
       [username, password]
     );
 
-    res.status(201).json({ id, msg: "User created successfully"})
+    res.status(201).json({ id, msg: "User created successfully" });
   }
 };
 
-export { logIn, singUp };
+const logOut = async (req: Request, res: Response) => {
+  const user: any = req.user;
+  await db.none(`UPDATE users SET token=$2 WHERE id=$1`, [user?.id, null]);
+  res.status(200).json({ msg: "Logout successfull" });
+};
+export { logIn, singUp, logOut };
